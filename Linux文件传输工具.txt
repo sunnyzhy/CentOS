@@ -1,0 +1,13 @@
+Linux文件传输工具SSH Secure File Transfer
+
+1.下载地址http://www.ohlone.edu/org/webcenter/sftptutorial/windowssftp-downloadinstall.html
+
+2.安装
+
+3.运行SSH Secure File Transfer Client
+
+4.点击 Quick Connect 按钮
+
+5.输入 CentOS 的 IP 地址和用户名
+
+6.点 connect ，输入密码
