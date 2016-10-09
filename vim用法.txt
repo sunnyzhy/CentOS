@@ -1,3 +1,4 @@
 1.Another program may be editing the same file 
+解决方法：
 根据提示 Found a swap file by the name "xx.swp"
 # rm -fr xx.swp
