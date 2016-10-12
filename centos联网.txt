@@ -5,6 +5,5 @@
 修改配置：
 ONBOOT=yes
 BOOTPROTO=dhcp
-:wq
 
 # service network restart
