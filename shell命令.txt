@@ -24,3 +24,11 @@ HOSTNAME=your hostname
 
 查看主机网络配置
 # ifconfig
+
+防火墙:
+# service iptables status --查看防火墙状态
+# service iptables stop  --停止防火墙
+# service iptables start  --启动防火墙
+# service iptables restart  --重启防火墙
+# chkconfig iptables off  --永久关闭防火墙
+# chkconfig iptables on  --永久关闭后启用
