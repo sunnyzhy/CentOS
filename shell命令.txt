@@ -32,3 +32,10 @@ HOSTNAME=your hostname
 # service iptables restart  --重启防火墙
 # chkconfig iptables off  --永久关闭防火墙
 # chkconfig iptables on  --永久关闭后启用
+
+关机：
+# shutdown -h now  --立即关机
+# shutdown -h 12:30  --设置系统在12:30关机
+# shutdown -r now  --立即重启
+# shutdown -r +2  --设置系统在2分钟后重新启动
+# shutdown -c  --取消
