@@ -39,3 +39,13 @@ HOSTNAME=your hostname
 # shutdown -r now  --立即重启
 # shutdown -r +2  --设置系统在2分钟后重新启动
 # shutdown -c  --取消
+
+查看系统是32位还是64位：
+# uname -a
+Linux hadoop1 2.6.32-504.el6.i686 #1 SMP Wed Oct 15 03:02:07 UTC 2014 i686 i686 i386 GNU/Linux
+# uname -m
+i686
+# arch
+i686
+x86_64：64位系统
+i686、i386：32位系统。i686只是i386的一个子集
