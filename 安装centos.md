@@ -1,4 +1,5 @@
 - INSTALLATION SUMMARY
+
 SOFTWARE -> SOFTWARE SELECTION -> GNOME Desktop
 SYSTEM -> INSTALLATION DESTINATION -> Device Selection -> Select Local Standard Disks
 
