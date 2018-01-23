@@ -4,20 +4,20 @@ SOFTWARE -> SOFTWARE SELECTION -> GNOME Desktop
 
 SYSTEM -> INSTALLATION DESTINATION -> Device Selection -> Select Local Standard Disks
 
-- Begin Insatllation
+2. Begin Insatllation
 
-- USER SETTINGS -> ROOT PASSWORD -> USER CREATION
+3. USER SETTINGS -> ROOT PASSWORD -> USER CREATION
 
-- Finish configuration
+4. Finish configuration
 
-- Reboot
+5. Reboot
 
-- Initial setup of CentOS Linux 7 (Core) -> 输入"1"，按Enter键；输入"2"，按Enter键；输入"q"，按Enter键；输入"yes"，按Enter键
+6. Initial setup of CentOS Linux 7 (Core) -> 输入"1"，按Enter键；输入"2"，按Enter键；输入"q"，按Enter键；输入"yes"，按Enter键
 
-- 登录CentOS
+7. 登录CentOS
 
-- 选择汉语 -> 前进；选择输入法 -> 前进
+8. 选择汉语 -> 前进；选择输入法 -> 前进
 
-- 设置系统时间 -> All Settings -> System -> Date & Time -> Time Zone -> CST (Shanghai, China)
+9. 设置系统时间 -> All Settings -> System -> Date & Time -> Time Zone -> CST (Shanghai, China)
 
-- 添加桌面快捷方式 -> /usr/share/applications -> 右击对应的图标Copy，然后Paste到桌面
+10. 添加桌面快捷方式 -> /usr/share/applications -> 右击对应的图标Copy，然后Paste到桌面
