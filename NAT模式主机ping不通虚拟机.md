@@ -12,9 +12,11 @@ NAT模式主机ping不通虚拟机，最大的原因可能是VMware Network Adap
    默认网关. . . . . . . . . . . . . :
 ```
 VMware Network Adapter VMnet8的IP、子网掩码和默认网关为：
+```
 IP:192.168.1.25
 子网掩码:255.255.0.0
 默认网关:
+```
 
 # linux虚拟机
 ```
