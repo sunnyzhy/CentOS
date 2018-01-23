@@ -25,3 +25,6 @@ All Settings -> System -> Date & Time -> Time Zone -> CST (Shanghai, China)
 
 # 添加桌面快捷方式
 /usr/share/applications -> 右击对应的图标Copy，然后Paste到桌面
+
+# 取消屏幕保护自动锁屏功能
+All Settings -> Privacy -> Screen Lock -> Automatic Screen Lock (OFF) & Show Notifications (OFF)
