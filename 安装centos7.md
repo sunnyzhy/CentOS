@@ -1,29 +1,33 @@
 # 安装
-1. INSTALLATION SUMMARY
+1. Install CentOS 7
+
+2. 选择系统的语言 -> Continue
+
+3. INSTALLATION SUMMARY
 
 SOFTWARE -> SOFTWARE SELECTION -> GNOME Desktop
 
 SYSTEM -> INSTALLATION DESTINATION -> Device Selection -> Select Local Standard Disks
 
-2. Begin Insatllation
+4. Begin Insatllation
 
-3. USER SETTINGS
+5. USER SETTINGS
 ROOT PASSWORD
 USER CREATION
 
-4. Finish configuration
+6. Finish configuration
 
-5. Reboot
+7. Reboot
 
-6. Initial setup of CentOS Linux 7 (Core)
+8. Initial setup of CentOS Linux 7 (Core)
 
 输入"1"，按Enter键；输入"2"，按Enter键；输入"q"，按Enter键；输入"yes"，按Enter键
 
-7. 登录CentOS
+9. 登录CentOS
 
-8. 选择汉语 -> 前进；选择输入法 -> 前进
+10. 选择汉语 -> 前进；选择输入法 -> 前进
 
-9. 设置系统时间
+11. 设置系统时间
 
 All Settings -> System -> Date & Time -> Time Zone -> CST (Shanghai, China)
 
