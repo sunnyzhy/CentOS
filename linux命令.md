@@ -1,12 +1,12 @@
 # 查看端口
-## lsof -i:端口号 用于查看某一端口的占用情况
+## lsof -i:端口号
 ```
 # lsof -i:8080
 COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 java    2103 root   17u  IPv4  28338      0t0  TCP *:webcache (LISTEN)
 ```
 
-## netstat -tunlp | grep 端口号，用于查看指定的端口号的进程情况
+## netstat -tunlp | grep 端口号
 ```
 # netstat -tunlp | grep 8080
 tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2103/java
