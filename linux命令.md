@@ -27,3 +27,26 @@ unix  2      [ ]         STREAM     CONNECTED     28594    2103/java
 root      2103     1  0  2018 ?        11:17:09 java -jar -Xms64M -Xmx128M -Xmn20M rocketmq-console-ng-1.0.0.jar
 root     13057 11227  0 16:34 pts/2    00:00:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn 2103
 ```
+
+# 查看java的执行路径
+```
+# which java
+/usr/bin/java
+```
+
+# 查看JDK的安装路径
+```
+# ls -lrt /usr/bin/java
+lrwxrwxrwx. 1 root root 22 5?. 15 11:49 /usr/bin/java -> /etc/alternatives/java
+
+# ls -lrt /etc/alternatives/java
+lrwxrwxrwx. 1 root root 41 5?. 15 11:49 /etc/alternatives/java -> /usr/java/jdk1.8.0_202-amd64/jre/bin/java
+
+# cd /usr/java/jdk1.8.0_202-amd64
+
+# ls
+bin             jre      README.html                         THIRDPARTYLICENSEREADME.txt
+COPYRIGHT       lib      release
+include         LICENSE  src.zip
+javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
+```
