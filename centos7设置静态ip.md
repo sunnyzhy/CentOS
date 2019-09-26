@@ -26,5 +26,9 @@ DNS1=8.8.8.8
 # ifconfig 只有 lo 和 virbr0
 # 重启出错（code=exited, status=1/FAILURE）
 ```
-# systemctl stop NetworkManager
+# systemctl stop NetworkManager 临时关闭
+
+# systemctl disable NetworkManager 永久关闭网络管理命令
+
+# systemctl restart network
 ```
