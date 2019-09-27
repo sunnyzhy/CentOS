@@ -50,3 +50,35 @@ COPYRIGHT       lib      release
 include         LICENSE  src.zip
 javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 ```
+
+# 切换账号
+- root 切换到普通用户
+
+```
+# su zhy
+
+$ 
+```
+由 root 切换到 zhy 之后，# 号变成了 $
+
+- 普通用户切换到 root
+
+```
+$ su root
+Password: 
+
+# 
+```
+由普通用户切换到 root 之后，$ 号变成了 #
+
+# 查看文件权限
+```
+# ls -l /usr/local/redis
+```
+
+# 修改文件的所有者
+```
+# chown zhy: redis-start.sh
+```
+root 账号才能修改文件的所有者
+
