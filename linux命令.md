@@ -82,3 +82,13 @@ Password:
 ```
 root 账号才能修改文件的所有者
 
+# 修改jar里的application.properties
+1. 用 vim xxx.jar，显示jar包内的文件列表
+
+```
+# vim xxx.jar
+```
+
+2. 输入 /application ，application.properties文件
+
+3. 按 Enter 键，之后就可以进行编辑了
