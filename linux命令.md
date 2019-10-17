@@ -89,6 +89,6 @@ root 账号才能修改文件的所有者
 # vim xxx.jar
 ```
 
-2. 输入 /application ，application.properties文件
+2. 输入 /application ，定位到对应的application.properties文件
 
 3. 按 Enter 键，之后就可以进行编辑了
