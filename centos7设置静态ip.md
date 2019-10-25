@@ -23,8 +23,73 @@ DNS1=8.8.8.8
 # systemctl restart network
 ```
 
-# ifconfig 只有 lo 和 virbr0
-# 重启出错（code=exited, status=1/FAILURE）
+# 常见问题
+## ifconfig 只有 lo 和 virbr0
+1. 用 ifconfig 查看
+
+```
+# ifconfig
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 0  (Local Loopback)
+        RX packets 320  bytes 25920 (25.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 320  bytes 25920 (25.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:cd:d6:7f  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+```
+
+2. 用 ip addr 查看
+
+```
+# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether 00:50:56:39:87:0a brd ff:ff:ff:ff:ff:ff
+3: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN 
+    link/ether 52:54:00:cd:d6:7f brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+4: virbr0-nic: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast master virbr0 state DOWN qlen 500
+    link/ether 52:54:00:cd:d6:7f brd ff:ff:ff:ff:ff:ff
+```
+
+3. 查看 network-scripts
+
+```
+# cd /etc/sysconfig/network-scripts
+```
+
+如果有 ifcfg-eno16777736 却没有 ifcfg-ens33，就修改 ifcfg-eno16777736
+
+```
+# vim ifcfg-eno16777736
+NAME=ens33
+DEVICE=ens33
+
+# mv ifcfg-eno16777736 ifcfg-ens33
+```
+
+4. 重启 network
+
+```
+# systemctl restart network
+```
+
+## 重启 network 出错（code=exited, status=1/FAILURE）
 ```
 # systemctl stop NetworkManager 临时关闭
 
