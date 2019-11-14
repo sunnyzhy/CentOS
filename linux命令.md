@@ -51,6 +51,54 @@ include         LICENSE  src.zip
 javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 ```
 
+# 查看当前所在目录
+```
+# cd /usr/local
+
+# pwd
+/usr/local
+```
+
+# 查看磁盘空间
+## 查看系统磁盘空间大小
+```
+# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root   48G   37G   12G  77% /
+devtmpfs                 7.8G     0  7.8G   0% /dev
+tmpfs                    7.8G   14M  7.8G   1% /dev/shm
+tmpfs                    7.8G  744M  7.1G  10% /run
+tmpfs                    7.8G     0  7.8G   0% /sys/fs/cgroup
+/dev/sda1               1014M  178M  837M  18% /boot
+/dev/mapper/centos-home   24G   13G   11G  53% /home
+tmpfs                    1.6G   16K  1.6G   1% /run/user/42
+tmpfs                    1.6G     0  1.6G   0% /run/user/1000
+tmpfs                    1.6G     0  1.6G   0% /run/user/0
+```
+
+## 查看当前目录下的所有文件大小
+```
+# du -sh
+118M	.
+```
+
+## 查看指定目录下的所有文件大小
+```
+# du -h /usr/local/
+```
+
+## 查看指定文件大小
+```
+# du -h access.log
+7.7M	access.log
+```
+
+## 查指定目录大小
+```
+# du -sh /usr/local
+118M	/usr/local
+```
+
 # 切换账号
 - root 切换到普通用户
 
