@@ -99,6 +99,17 @@ tmpfs                    1.6G     0  1.6G   0% /run/user/0
 118M	/usr/local
 ```
 
+## 查找已删除但未释放的文件
+```
+# lsof -n | grep deleted
+
+# kill -9 pid
+```
+
+注意：
+
+使用 rm 删除文件的时候，如果有进程打开了这个文件，却没有关闭这个文件的句柄，那么linux内核还是不会释放这个文件的磁盘空间。可以 echo > filename 清空文件。
+
 # 切换账号
 - root 切换到普通用户
 
