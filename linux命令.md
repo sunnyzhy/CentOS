@@ -28,6 +28,15 @@ root      2103     1  0  2018 ?        11:17:09 java -jar -Xms64M -Xmx128M -Xmn2
 root     13057 11227  0 16:34 pts/2    00:00:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn 2103
 ```
 
+# 根据PID查看进程的绝对路径
+```
+# ps -ef | grep service_name
+
+# cd /proc/pid
+
+# ls -l
+```
+
 # 查看java的执行路径
 ```
 # which java
