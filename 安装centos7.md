@@ -1,4 +1,5 @@
-# 安装
+# 安装centos7
+## 1. 安装
 1. Install CentOS 7
 
 2. 选择系统的语言 -> Continue
@@ -31,11 +32,36 @@ USER CREATION
 
 All Settings -> System -> Date & Time -> Time Zone -> CST (Shanghai, China)
 
-# 添加桌面快捷方式
+## 2. 添加桌面快捷方式
 /usr/share/applications -> 右击对应的图标Copy，然后Paste到桌面
 
-# 取消屏幕保护自动锁屏功能
+## 3. 取消屏幕保护自动锁屏功能
 All Settings -> Privacy -> Screen Lock -> Automatic Screen Lock (OFF) & Show Notifications (OFF)
 
-# 添加中文输入法
+## 4. 添加中文输入法
 All Settings -> Region & Language -> Input Sources -> + -> Chinese (Intelligent Pinyin)
+
+## 5. 配置国内 yum 源
+[阿里云官方镜像站](https://developer.aliyun.com/mirror/ "aliyun")
+
+### 5.1. 备份
+```bash
+# mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+```
+
+### 5.2. 下载新的 CentOS-Base.repo 到 /etc/yum.repos.d/
+```bash
+wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+```
+或者
+
+```bash
+curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
+```
+
+### 5.3. 生成缓存
+```bash
+# yum clean all
+
+# yum makecache
+```
