@@ -1,10 +1,10 @@
 # 创建文件目录
-```
+```bash
 # mkdir zz
 ```
 
 # 查看目录下文件
-```
+```bash
 # ls
 
 # ls -a // 显示所有文件及目录
@@ -13,32 +13,32 @@
 ```
 
 # 复制文件
-```
+```bash
 # cp /home/run.sh /usr/local
 ```
 
 # 修改文件名
-```
+```bash
 # mv /home/run.sh /home/1.sh
 ```
 
 # 修改文件夹名
-```
+```bash
 # mv /home/zz /home/z
 ```
 
 # 移动文件
-```
+```bash
 # mv /root/run.sh /usr/local
 ```
 
 # 移动文件夹
-```
+```bash
 # mv /home/z /usr/local
 ```
 
 # 查看当前所在目录
-```
+```bash
 # cd /usr/local
 
 # pwd
@@ -46,18 +46,18 @@
 ```
 
 # 查看登录用户信息
-```
+```bash
 # who
 root     pts/0        2020-06-10 10:16 (xx-pc)
 ```
 
 # 显示文件全部内容
-```
+```bash
 # cat nohup.out
 ```
 
 # 动态显示文件的内容
-```
+```bash
 # tail -f -n 30 nohup.out
 ```
 
@@ -65,12 +65,12 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 - -n <行数>：显示文件的尾部 n 行内容
 
 # 显示文件前 n 行内容
-```
+```bash
 # head -n 10 nohup.out
 ```
 
 # 删除文件
-```
+```bash
 # rm -rf zz
 ```
 
@@ -79,16 +79,23 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 
 # 清空文件内容
 ## 第一种
-```
+```bash
 # > nohup.out
 ```
 
 ## 第二种
-```
+```bash
 # echo "" > nohup.out
 ```
 
 ## 第三种
-```
+```bash
 # cat /dev/null > nohup.out
 ```
+
+# 服务器之间传输文件
+```bash
+# scp -r /usr/local/dir target_username@target_ip:/usr/local/dir
+target_username@target_ip's password:
+```
+
