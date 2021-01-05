@@ -99,3 +99,13 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 target_username@target_ip's password:
 ```
 
+# 压缩/解压文件
+## 压缩
+```bash
+# tar -czvf xxx.tar.gz dir
+```
+
+## 解压
+```bash
+# tar -xzvf xxx.tar.gz -C dir
+```
