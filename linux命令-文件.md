@@ -100,12 +100,26 @@ target_username@target_ip's password:
 ```
 
 # 压缩/解压文件
-## 压缩
+## tar.gz
+### 压缩
 ```bash
 # tar -czvf xxx.tar.gz dir
 ```
 
-## 解压
+### 解压
 ```bash
 # tar -xzvf xxx.tar.gz -C dir
+```
+
+## jar
+### 压缩
+```bash
+# cd xxx
+
+# jar -cvf0m xxx.jar ./META-INF/MANIFEST.MF .
+```
+
+### 解压
+```bash
+# unzip xxx.jar -d xxx
 ```
