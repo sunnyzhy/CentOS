@@ -103,7 +103,7 @@ target_username@target_ip's password:
 ## tar.gz
 ### 压缩
 ```bash
-# tar -czvf xxx.tar.gz dir
+# tar -czvf xxx.tar.gz(目标文件) 源文件
 ```
 
 ### 解压
