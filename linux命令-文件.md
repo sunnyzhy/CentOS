@@ -170,17 +170,21 @@ target_username@target_ip's password:
    ```
 
 3. 把每一行的第一个 aa 替换为 bb
-   ```bash
-   :%s/aa/bb/
-   ```
-   ```bash
-   :g/aa/s//bb/
-   ```
+   - 方法1
+      ```bash
+      :%s/aa/bb/
+      ```
+   - 方法2
+      ```bash
+      :g/aa/s//bb/
+      ```
 
 4. 把每一行中所有的 aa 替换为 bb
-   ```bash
-   :%s/aa/bb/g
-   ```
-   ```bash
-   :g/aa/s//bb/g
-   ```
+   - 方法1
+      ```bash
+      :%s/aa/bb/g
+      ```
+   - 方法2
+      ```bash
+      :g/aa/s//bb/g
+      ```
