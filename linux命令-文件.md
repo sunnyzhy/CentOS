@@ -157,3 +157,30 @@ target_username@target_ip's password:
    ```bash
    "+y
    ```
+
+## vim 全选复制
+1. 把当前行的第一个 aa 替换为 bb
+   ```bash
+   :s/aa/bb/
+   ```
+
+2. 把当前行中所有的 aa 替换为 bb
+   ```bash
+   :s/aa/bb/g
+   ```
+
+3. 把每一行的第一个 aa 替换为 bb
+   ```bash
+   :%s/aa/bb/
+   ```
+   ```bash
+   :g/aa/s//bb/
+   ```
+
+4. 把每一行中所有的 aa 替换为 bb
+   ```bash
+   :%s/aa/bb/g
+   ```
+   ```bash
+   :g/aa/s//bb/g
+   ```
