@@ -169,3 +169,30 @@ root 账号才能修改文件的所有者
 
 # date
 ```
+
+# 查看 Linux 版本信息
+
+## 查看版本号
+
+```bash
+# ll /etc/*centos*
+-rw-r--r--. 1 root root 37 Nov 23  2020 /etc/centos-release
+-rw-r--r--. 1 root root 51 Nov 23  2020 /etc/centos-release-upstream
+
+# cat /etc/centos-release
+CentOS Linux release 7.9.2009 (Core)
+```
+
+## 查看内核版本
+
+```bash
+# uname -r
+3.10.0-1127.el7.x86_64
+```
+
+## 查看操作系统位数
+
+```bash
+# getconf LONG_BIT
+64
+```
