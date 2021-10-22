@@ -96,8 +96,15 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 ```
 
 ## 服务器之间传输文件
+### 传输单个文件
 ```bash
 # scp -r /usr/local/dir target_username@target_ip:/usr/local/dir
+target_username@target_ip's password:
+```
+
+### 传输指定目录下的所有文件
+```bash
+# scp -r /usr/local/dir/* target_username@target_ip:/usr/local/dir
 target_username@target_ip's password:
 ```
 
@@ -113,7 +120,7 @@ target_username@target_ip's password:
 # tar -xzvf xxx.tar.gz -C dir
 ```
 
-### jar
+### jar/zip/...
 #### 压缩
 ```bash
 # cd xxx
@@ -121,7 +128,12 @@ target_username@target_ip's password:
 # jar -cvf0m xxx.jar ./META-INF/MANIFEST.MF .
 ```
 
-#### 解压
+#### 解压到当前目录
+```bash
+# unzip xxx.jar
+```
+
+#### 解压到指定目录
 ```bash
 # unzip xxx.jar -d xxx
 ```
