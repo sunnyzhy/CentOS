@@ -85,6 +85,8 @@
       ```bash
       # ps | less
       ```
+   - shift + g 移动到最后一行
+   - ctrl + b 往前翻页查看
 
 ## head 命令
 
