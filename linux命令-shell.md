@@ -150,3 +150,11 @@ echo "---------------"
 /usr/local/find/aa/aa01
 /usr/local/find/bb
 ```
+
+同时指定 mindepth 和 maxdepth 缩小遍历的范围:
+
+```bash
+# find $dir -mindepth 1 -maxdepth 1
+/usr/local/find/aa
+/usr/local/find/bb
+```
