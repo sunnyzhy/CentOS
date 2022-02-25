@@ -213,17 +213,17 @@ do
 	then
 		if test ! -d $dir/target 
 		then
-      # 如果源目录里没有 target 目录，就直接复制源文件到目标目录里
+			# 如果源目录里没有 target 目录，就直接复制源文件到目标目录里
 			jar=`find $dir -mindepth 1 -maxdepth 1 -name "*.jar" -type f`
 			if test ! -z $jar 
 			then
 				cp -r $dir/ $target
 				continue
 			fi  fi
-      # 处理源目录里的 target 目录，视实际情况来定，如果目标目录里需要 target 目录，就不用执行以下两行命令
+			# 处理源目录里的 target 目录，视实际情况来定，如果目标目录里需要 target 目录，就不用执行以下两行命令
 			mv $dir/target/*.jar $dir/
 			rm -rf $dir/target
-      # 复制源文件到目标目录里
+			# 复制源文件到目标目录里
 			cp -r $dir $target
 		fi
 	done
