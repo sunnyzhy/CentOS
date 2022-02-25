@@ -1,4 +1,4 @@
-# linux命令-shell
+# linux 命令 - shell 脚本
 
 ## 1 查找 jar 进程 ID，并杀死进程
 
@@ -157,4 +157,97 @@ echo "---------------"
 # find $dir -mindepth 1 -maxdepth 1
 /usr/local/find/aa
 /usr/local/find/bb
+```
+
+## 综合应用
+```bash
+#/bin/sh
+
+# 结束名称前缀为 st- 的 java 进程
+PID=$(ps -ef | grep st- | grep -v grep | awk '{print $2}')
+for pid in $PID
+do
+	kill -9 $pid
+done
+
+# 存储 java 文件(jar) 的目标目录
+target=/usr/java/app
+
+# 删除目标目录里的旧 jar 文件
+for dir in $target/*
+do
+	if test -d $dir
+	then
+		if test[ $dir == */st-* ] # 只删除名称前缀为 st- 的目录里的 jar 文件
+		then
+			if test[ $dir == */st-ignore1 || $dir == */st-ignore2 || $dir == */st-ignore3 ] # 忽略指定名称前缀的 jar 文件
+			then
+				continue
+			fi
+			for d in $dir/*
+			do
+				if test -d $d
+				then
+					if test[ $d == */log ] # 删除 log 目录
+					then
+						rm -rf $d
+					fi
+				fi
+				if test -f $d
+				then
+					if test[ $d == *.log || $d == *.jar* ] # 只删除 log 文件和 jar 文件，重要：如果有 pem, lic 文件，则不能删除
+					then
+						rm -rf $d
+					fi
+				fi
+			done
+		fi
+	fi
+done
+
+# 把源文件复制到目标目录里
+roots=/usr/local/deploy_app
+for dir in $roots/*
+do
+	if test -d $dir
+	then
+		if test ! -d $dir/target 
+		then
+      # 如果源目录里没有 target 目录，就直接复制源文件到目标目录里
+			jar=`find $dir -mindepth 1 -maxdepth 1 -name "*.jar" -type f`
+			if test ! -z $jar 
+			then
+				cp -r $dir/ $target
+				continue
+			fi  fi
+      # 处理源目录里的 target 目录，视实际情况来定，如果目标目录里需要 target 目录，就不用执行以下两行命令
+			mv $dir/target/*.jar $dir/
+			rm -rf $dir/target
+      # 复制源文件到目标目录里
+			cp -r $dir $target
+		fi
+	done
+
+	# 启动名称前缀为 st- 的 java 进程
+	apps=`find $target -mindepth 1 -maxdepth 1 -type d`
+	for a in $apps
+	do
+		if test[ "$(ls -A $a)" == "" || $a == */IgnoreDir ] # 如果是空目录或需要忽略启动的目录，就不执行启动命令
+		then
+			continue
+		fi
+		cd $a
+		app=`find ./ -mindepth 1 -maxdepth 1 -name "*.jar" -type f` # 只在当前目录下查找 jar 文件，不用递归子级目录
+		if test ! -z "$app"  # 如果文件大小不为 0
+		then
+			if test[ $app == */st-app-* ] # 如果 jar 文件的名称前缀为 st-app-, 就把 jvm 的启动内存设置为 512m
+			then
+				nohup java -jar -XX:+HeapDumpOnOutOfMemoryError -Xmx512m -Xms512m $app > /dev/null 2>&1 &
+			else # 否则, 就把 jvm 的启动内存设置为 256m
+				nohup java -jar -XX:+HeapDumpOnOutOfMemoryError -Xmx256m -Xms256m $app > /dev/null 2>&1 &
+			fi
+		fi
+	done
+
+	echo "ok!"
 ```
