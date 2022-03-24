@@ -18,6 +18,18 @@
 # ls *.jar // 查找当前目录里的 jar 文件
 ```
 
+## ls 命令显示文件大小
+
+```bash
+# ls -lh // 以适当方式显示文件大小
+
+# ls -l // 以 byte 显示文件大小
+
+# ls -l --block-size=m // 以 M 显示文件大小
+
+# ls -l --block-size=G // 以 G 显示文件大小
+```
+
 ## 复制文件
 ```bash
 # cp /home/run.sh /usr/local
