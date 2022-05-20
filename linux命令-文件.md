@@ -186,7 +186,10 @@ target_username@target_ip's password:
    "+y
    ```
 
-## vim 全选复制
+## vim 替换
+
+***后续完善 sed 指令***
+
 1. 把当前行的第一个 aa 替换为 bb
    ```bash
    :s/aa/bb/
