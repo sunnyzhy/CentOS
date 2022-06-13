@@ -1,19 +1,26 @@
-# 查看端口
-## lsof -i:端口号
+# linux命令
+
+## 查看端口
+
+### lsof -i:端口号
+
 ```bash
 # lsof -i:8080
 COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 java    2103 root   17u  IPv4  28338      0t0  TCP *:webcache (LISTEN)
 ```
 
-## netstat -tunlp | grep 端口号
+### netstat -tunlp | grep 端口号
+
 ```bash
 # netstat -tunlp | grep 8080
 tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2103/java
 ```
 
-# 通过PID查看进程完整信息
-## netstat -anp | grep PID
+## 通过PID查看进程完整信息
+
+### netstat -anp | grep PID
+
 ```bash
 # netstat -anp | grep 2103
 tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      2103/java           
@@ -21,14 +28,16 @@ unix  2      [ ]         STREAM     CONNECTED     28339    2103/java
 unix  2      [ ]         STREAM     CONNECTED     28594    2103/java
 ```
 
-## ps -ef | grep PID
+### ps -ef | grep PID
+
 ```bash
 # ps -ef | grep 2103
 root      2103     1  0  2018 ?        11:17:09 java -jar -Xms64M -Xmx128M -Xmn20M rocketmq-console-ng-1.0.0.jar
 root     13057 11227  0 16:34 pts/2    00:00:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn 2103
 ```
 
-# 根据PID查看进程的绝对路径
+## 根据PID查看进程的绝对路径
+
 ```bash
 # ps -ef | grep service_name
 
@@ -37,13 +46,15 @@ root     13057 11227  0 16:34 pts/2    00:00:00 grep --color=auto --exclude-dir=
 # ls -l
 ```
 
-# 查看java的执行路径
+## 查看java的执行路径
+
 ```bash
 # which java
 /usr/bin/java
 ```
 
-# 查看JDK的安装路径
+## 查看JDK的安装路径
+
 ```bash
 # ls -lrt /usr/bin/java
 lrwxrwxrwx. 1 root root 22 5?. 15 11:49 /usr/bin/java -> /etc/alternatives/java
@@ -60,7 +71,8 @@ include         LICENSE  src.zip
 javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 ```
 
-# 查看当前所在目录
+## 查看当前所在目录
+
 ```bash
 # cd /usr/local
 
@@ -68,8 +80,10 @@ javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 /usr/local
 ```
 
-# 查看磁盘空间
-## 查看系统磁盘空间大小
+## 查看磁盘空间
+
+### 查看系统磁盘空间大小
+
 ```bash
 # df -h
 Filesystem               Size  Used Avail Use% Mounted on
@@ -85,30 +99,35 @@ tmpfs                    1.6G     0  1.6G   0% /run/user/1000
 tmpfs                    1.6G     0  1.6G   0% /run/user/0
 ```
 
-## 查看当前目录下的所有文件大小
+### 查看当前目录下的所有文件大小
+
 ```bash
 # du -sh
 118M	.
 ```
 
-## 查看指定目录下的所有文件大小
+### 查看指定目录下的所有文件大小
+
 ```bash
 # du -h /usr/local/
 ```
 
-## 查看指定文件大小
+### 查看指定文件大小
+
 ```bash
 # du -h access.log
 7.7M	access.log
 ```
 
-## 查指定目录大小
+### 查指定目录大小
+
 ```bash
 # du -sh /usr/local
 118M	/usr/local
 ```
 
-## 查找已删除但未释放的文件
+### 查找已删除但未释放的文件
+
 ```bash
 # lsof -n | grep deleted
 
@@ -119,7 +138,8 @@ tmpfs                    1.6G     0  1.6G   0% /run/user/0
 
 使用 rm 删除文件的时候，如果有进程打开了这个文件，却没有关闭这个文件的句柄，那么linux内核还是不会释放这个文件的磁盘空间。可以 echo > filename 清空文件。
 
-# 切换账号
+## 切换账号
+
 - root 切换到普通用户
 
 ```bash
@@ -139,18 +159,21 @@ Password:
 ```
 由普通用户切换到 root 之后，$ 号变成了 #
 
-# 查看文件权限
+## 查看文件权限
+
 ```bash
 # ls -l /usr/local/redis
 ```
 
-# 修改文件的所有者
+## 修改文件的所有者
+
 ```bash
 # chown zhy: redis-start.sh
 ```
 root 账号才能修改文件的所有者
 
-# 修改jar里的application.properties
+## 修改jar里的application.properties
+
 1. 用 vim xxx.jar，显示jar包内的文件列表
 
 ```bash
@@ -161,7 +184,33 @@ root 账号才能修改文件的所有者
 
 3. 按 Enter 键，之后就可以进行编辑了
 
-# 校准服务器时间
+## 系统时区
+
+### 查看系统时间
+
+```bash
+# date
+```
+
+### 查看系统当前时区
+
+```bash
+# timedatectl
+```
+
+### 查看系统所有时区
+
+```bash
+# timedatectl list-timezones
+```
+
+### 设置系统时区
+
+```bash
+# timedatectl set-timezone Asia/Shanghai
+```
+
+## 校准服务器时间
 ```bash
 # ntpdate 1.cn.pool.ntp.org
 
@@ -170,9 +219,9 @@ root 账号才能修改文件的所有者
 # date
 ```
 
-# 查看 Linux 版本信息
+## 查看 Linux 版本信息
 
-## 查看版本号
+### 查看版本号
 
 ```bash
 # ll /etc/*centos*
@@ -183,14 +232,14 @@ root 账号才能修改文件的所有者
 CentOS Linux release 7.9.2009 (Core)
 ```
 
-## 查看内核版本
+### 查看内核版本
 
 ```bash
 # uname -r
 3.10.0-1127.el7.x86_64
 ```
 
-## 查看操作系统位数
+### 查看操作系统位数
 
 ```bash
 # getconf LONG_BIT
