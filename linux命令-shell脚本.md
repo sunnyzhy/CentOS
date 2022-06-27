@@ -1,5 +1,10 @@
 # linux 命令 - shell 脚本
 
+## /bin/bash 和 /bin/sh 的区别
+
+1. ```/bin/sh``` 是 ```/bin/bash``` 的软连接，在一般的 linux 系统当中，使用 sh 调用执行脚本相当于打开了 bash 的 POSIX 标准模式，也就是说 ```/bin/sh``` 相当于 ```/bin/bash --posix```
+2. ```/bin/sh``` 执行过程中，若出现命令执行失败，则会停止执行；```/bin/bash``` 执行过程中，若命令执行失败，仍然会继续执行
+
 ## 1 查找 jar 进程 ID，并杀死进程
 
 假如 jar 文件都是以 ```st-``` 开头。
