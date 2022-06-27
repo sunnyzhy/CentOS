@@ -120,7 +120,7 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 
    ```bash
       # echo "" > nohup.out
-```
+   ```
 
 - 第三种
 
