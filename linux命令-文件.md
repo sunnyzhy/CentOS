@@ -182,6 +182,85 @@ target_username@target_ip's password:
 # unzip xxx.jar -d xxx
 ```
 
+## 提取文件名和目录名
+
+### ${var#\*.} 取文件的后缀名
+
+删除第一个 ```.``` 及之前的内容。
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo ${var#*.}
+log
+
+# var=/dir1/dir2/file.tar.gz
+
+# echo ${var#*.}
+tar.gz
+```
+
+### {var##\*/} 取文件名
+
+删除最后一个 ```/``` 及之前的内容。
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo ${var##*/}
+file.log
+```
+
+### ${var##\*.} 取文件的后缀名
+
+删除最后一个 ```.``` 及之前的内容。
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo ${var##*.}
+log
+
+# var=/dir1/dir2/file.tar.gz
+
+# echo ${var##*.}
+gz
+```
+
+### ${var%/\*} 取目录名
+
+删除最后一个 ```/``` 及之后的内容。
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo ${var%/*}
+/dir1/dir2
+```
+
+### ${var%%.\*} 取文件名（不含后缀名）
+
+删除第一个 ```.``` 及之后的内容。
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo ${var%%.*}
+/dir1/dir2/file
+
+# var=/dir1/dir2/file.tar.gz
+
+# echo ${var%%.*}
+/dir1/dir2/file
+```
+
+注:
+
+- #: 删除第一个匹配字符及之前的内容
+- ##: 删除最后一个匹配字符及之前的内容
+- %: 删除最后一个匹配字符及之后的内容
+- %%: 删除第一个匹配字符及之后的内容
+
 ## 目录使用率为 100%
 
 - 使用 ```lsof``` 杀死僵尸进程
