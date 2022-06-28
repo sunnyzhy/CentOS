@@ -182,7 +182,30 @@ target_username@target_ip's password:
 # unzip xxx.jar -d xxx
 ```
 
-## 提取文件名和目录名
+## 获取文件名和目录名
+
+### basename 获取文件名
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo $(basename $var)
+file.log
+
+# var=/dir1/dir2/file.tar.gz
+
+# echo $(basename $var)
+file.tar.gz
+```
+
+### dirname 获取目录名
+
+```bash
+# var=/dir1/dir2/file.log
+
+# echo $(dirname $var)
+/dir1/dir2
+```
 
 ### ${var#\*.} 取文件的后缀名
 
