@@ -15,3 +15,11 @@
 ```bash
 # make
 ```
+
+## 2 Another app is currently holding the yum lock; waiting for it to exit...
+
+通过执行如下命令强制解除占用:
+
+```bash
+# rm -rf /var/run/yum.pid
+```
