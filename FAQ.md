@@ -23,3 +23,9 @@
 ```bash
 # rm -rf /var/run/yum.pid
 ```
+
+## 3 Someone could be eavesdropping on you right now (man-in-the-middle attack)!It is also possible that a host key has just been changed.
+
+```bash
+# ssh-keygen -R 主机名或主机IP
+```
