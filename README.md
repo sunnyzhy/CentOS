@@ -35,7 +35,7 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 ### 3. 生成缓存
 
 ```bash
-# yum clean all
+yum clean all
 
-# yum makecache
+yum makecache
 ```
