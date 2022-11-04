@@ -29,7 +29,7 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 #### centos8
 
 ```bash
-wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo
 ```
 
 ### 3. 生成缓存
