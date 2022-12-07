@@ -191,6 +191,12 @@ ssh <username>@<target_server_ip>
 ```
 root 账号才能修改文件的所有者
 
+## 远程传输文件
+
+```bash
+scp -r <source_dir> <remote_server_username>@<remote_server_ip>:<remote_server_dir>
+```
+
 ## 修改jar里的application.properties
 
 1. 用 vim xxx.jar，显示jar包内的文件列表
