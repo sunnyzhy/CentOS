@@ -142,22 +142,41 @@ tmpfs                    1.6G     0  1.6G   0% /run/user/0
 
 - root 切换到普通用户
 
-```bash
-# su zhy
-
-$ 
-```
-由 root 切换到 zhy 之后，# 号变成了 $
+   ```bash
+   # su zhy
+   
+   $ 
+   ```
+   由 root 切换到 zhy 之后，# 号变成了 $
 
 - 普通用户切换到 root
 
-```bash
-$ su root
-Password: 
+   ```bash
+   $ su root
+   Password: 
+   
+   # 
+   ```
 
-# 
+   或者
+
+   ```bash
+   $ sudo su
+   ```
+
+   由普通用户切换到 root 之后，$ 号变成了 #
+
+## 修改密码
+
+```bash
+passwd <username>
 ```
-由普通用户切换到 root 之后，$ 号变成了 #
+
+## 远程登录
+
+```bash
+ssh <username>@<target_server_ip>
+```
 
 ## 查看文件权限
 
