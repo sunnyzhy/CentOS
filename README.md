@@ -39,3 +39,9 @@ yum clean all
 
 yum makecache
 ```
+
+## RPM 资源
+
+```
+http://www.rpmfind.net/linux/rpm2html/search.php
+```
