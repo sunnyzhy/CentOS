@@ -270,3 +270,12 @@ CentOS Linux release 7.9.2009 (Core)
 # getconf LONG_BIT
 64
 ```
+
+## 设置开机启动脚本
+
+***把 .sh 脚本加入 ```/etc/rc.local```***
+
+```bash
+# vim /etc/rc.local
+/usr/autostart/nginx.sh &
+```
