@@ -279,3 +279,22 @@ CentOS Linux release 7.9.2009 (Core)
 # vim /etc/rc.local
 /usr/autostart/nginx.sh &
 ```
+
+## 创建定时任务
+
+```bash
+# crontab -l
+
+# crontab -e
+# 每天凌晨两点，自动从 192.168.5.10 同步一次
+0 2 * * * ntpdate 192.168.5.10
+```
+
+### FAQ
+
+```bash
+# crontab -l
+no crontab for root
+```
+
+解决方法: 同样在 ```root``` 用户下输入 ```crontab -e```, 按 ```Esc```, 再按```:wq```, 最后回车。
