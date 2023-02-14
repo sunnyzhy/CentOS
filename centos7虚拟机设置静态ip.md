@@ -1,33 +1,88 @@
-# 关闭VMware的DHCP
-1. 打开VMware的 编辑 -> 虚拟网络编辑器 -> 选择VMnet8 -> 不勾选“使用本地DHCP服务将IP地址分配给虚拟机”
+# centos7 虚拟机设置静态 ip
 
-2. 打开NAT设置，查看网关IP，如192.168.253.2
+## NAT 模式
 
-3. 打开VMware的 虚拟机 -> 设置 -> 网络适配器 -> NAT模式
+## 关闭VMware的DHCP
 
-# 设置静态IP
-```
+1. 打开 VMware 的 ```编辑 -> 虚拟网络编辑器 -> 选择VMnet8(NAT模式) -> 不勾选"使用本地DHCP服务将IP地址分配给虚拟机"```
+
+2. 打开 NAT 设置，查看网关 IP，如 192.168.253.2
+
+3. 打开 VMware 的 ```虚拟机 -> 设置 -> 网络适配器 -> NAT模式```
+
+## 设置静态IP
+
+```bash
 # cd /etc/sysconfig/network-scripts
 
 # vim ifcfg-eno16777736
 BOOTPROTO=static
 ONBOOT=yes
+IPV6INIT=yes
+ARPCHECK=no
 IPADDR=192.168.253.107
 BROADCAST=192.168.253.255
 GATEWAY=192.168.253.2
 NETMASK=255.255.255.0
-IPV6INIT=yes
-ARPCHECK=no
 DNS1=8.8.8.8
 
 # systemctl restart network
 ```
 
-# 常见问题
-## ifconfig 只有 lo 和 virbr0
+## Bridged 模式
+
+## 配置 Bridged 模式
+
+1. 打开VMware的 ```编辑 -> 虚拟网络编辑器 -> 选择VMnet0(桥接模式)```
+
+## 设置静态IP
+
+查看宿主机的网络信息:
+
+```bash
+以太网适配器 以太网:
+
+   连接特定的 DNS 后缀 . . . . . . . : 
+   本地链接 IPv6 地址. . . . . . . . : fe80::41f:b65d:3b35:8f67%9
+   IPv4 地址 . . . . . . . . . . . . : 192.168.0.100
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 192.168.0.1
+```
+
+查看虚拟系统的 mac 地址(```link/ether```):
+
+```bash
+# ip addr
+2: eno16777736: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 00:0c:29:7c:62:5c brd ff:ff:ff:ff:ff:ff
+```
+
+修改虚拟系统的网络信息:
+
+```bash
+# cd /etc/sysconfig/network-scripts
+
+# vim ifcfg-eno16777736
+BOOTPROTO=static
+ONBOOT=yes
+IPV6INIT=yes
+ARPCHECK=no
+IPADDR=192.168.0.107
+HWADDR=00:0c:29:7c:62:5c
+GATEWAY=192.168.0.1
+NETMASK=255.255.255.0
+DNS1=8.8.8.4
+
+# systemctl restart network
+```
+
+## FAQ
+
+### ifconfig 只有 lo 和 virbr0
+
 1. 用 ifconfig 查看
 
-```
+```bash
 # ifconfig
 lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         inet 127.0.0.1  netmask 255.0.0.0
@@ -49,7 +104,7 @@ virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 2. 用 ip addr 查看
 
-```
+```bash
 # ip addr
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -69,13 +124,13 @@ virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 3. 查看 network-scripts
 
-```
+```bash
 # cd /etc/sysconfig/network-scripts
 ```
 
 如果有 ifcfg-eno16777736 却没有 ifcfg-ens33，就修改 ifcfg-eno16777736
 
-```
+```bash
 # vim ifcfg-eno16777736
 NAME=ens33
 DEVICE=ens33
@@ -85,12 +140,13 @@ DEVICE=ens33
 
 4. 重启 network
 
-```
+```bash
 # systemctl restart network
 ```
 
-## 重启 network 出错（code=exited, status=1/FAILURE）
-```
+### 重启 network 出错（code=exited, status=1/FAILURE）
+
+```bash
 # systemctl stop NetworkManager 临时关闭
 
 # systemctl disable NetworkManager 永久关闭网络管理命令
