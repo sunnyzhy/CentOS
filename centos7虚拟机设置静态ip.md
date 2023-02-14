@@ -49,14 +49,6 @@ DNS1=8.8.8.8
    默认网关. . . . . . . . . . . . . : 192.168.0.1
 ```
 
-查看虚拟系统的 mac 地址(```link/ether```):
-
-```bash
-# ip addr
-2: eno16777736: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 00:0c:29:7c:62:5c brd ff:ff:ff:ff:ff:ff
-```
-
 修改虚拟系统的网络信息:
 
 ```bash
@@ -68,7 +60,6 @@ ONBOOT=yes
 IPV6INIT=yes
 ARPCHECK=no
 IPADDR=192.168.0.107
-HWADDR=00:0c:29:7c:62:5c
 GATEWAY=192.168.0.1
 NETMASK=255.255.255.0
 DNS1=8.8.8.4
