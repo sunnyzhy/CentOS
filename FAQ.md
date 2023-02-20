@@ -35,3 +35,18 @@
 问题原因: 不小心按了 ```Ctrl + s```，vim 停止向终端输出，导致不能输入任何字符
 
 解决方法: 按下 ```Ctrl + q``` 退出这种状态
+
+## 5 找不到 Network 的 Wird 可视化配置项
+
+问题描述: 
+
+1. ```systemctl restart network``` 重启 network 报错
+2. 找不到 Network 的 Wird 可视化配置项
+
+解决方法:
+
+```bash
+mv /var/lib/NetworkManager /var/lib/NetworkManager.bak
+
+reboot
+```
