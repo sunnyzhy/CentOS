@@ -50,3 +50,16 @@ mv /var/lib/NetworkManager /var/lib/NetworkManager.bak
 
 reboot
 ```
+
+## 6 Entering emergency mode.Exit the shell to continue
+
+```bash
+# journalctl
+XFS(xxx)....
+
+# xfs_repair -v -L /dev/xxx
+
+# reboot
+```
+
+***注: ```xfs_repair``` 的目录就是 ```XFS``` 括号里的内容。***
