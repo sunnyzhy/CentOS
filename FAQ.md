@@ -93,6 +93,6 @@ mv CentOS-Base.repo.rpmnew CentOS-Base.repo
 yum update
 ```
 
-1. 修改 ```/etc/yum.repos.d/CentOS-Base.repo``` 中的 ```$releasever``` 为对应的系统版本路径，比如 ```centos7``` 就改为 ```7```
-2. 安装 ```yum install -y centos-release```，在 ```/etc/yum.repos.d``` 生成了新的源文件 ```CentOS-Base.repo.rpmnew```
+1. 修改 ```/etc/yum.repos.d/CentOS-Base.repo``` 中的 ```$releasever``` 为对应的系统版本号，比如 ```centos7``` 就改为 ```7```
+2. 安装 ```yum install -y centos-release```，在 ```/etc/yum.repos.d``` 目录里会生成新的源文件 ```CentOS-Base.repo.rpmnew```
 3. 把 ```CentOS-Base.repo.rpmnew``` 修改为 ```CentOS-Base.repo```，```$releasever``` 就可以正常解析了
