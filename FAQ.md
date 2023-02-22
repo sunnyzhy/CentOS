@@ -63,3 +63,36 @@ XFS(xxx)....
 ```
 
 ***注: ```xfs_repair``` 的目录就是 ```XFS``` 括号里的内容。***
+
+## 7 $releasever 不能被系统识别
+
+yum 报错:
+
+```
+http://mirrors.aliyun.com/centos/%24releasever/os/x86_64/repodata/repomd.xml: [Errno 14] HTTP Error 404 - Not Found
+```
+
+```$releasever``` 变量没有被系统识别:
+
+```bash
+# rpm -q centos-release
+package centos-release is not installed
+```
+
+```centos-release``` 包没有安装。
+
+解决方法:
+
+```bash
+sed -i 's+$releasever+7+' /etc/yum.repos.d/CentOS-Base.repo
+
+yum install -y centos-release
+
+mv CentOS-Base.repo.rpmnew CentOS-Base.repo
+
+yum update
+```
+
+1. 修改 ```/etc/yum.repos.d/CentOS-Base.repo``` 中的 ```$releasever``` 为对应的系统版本路径，比如 ```centos7``` 就改为 ```7```
+2. 安装 ```yum install -y centos-release```，在 ```/etc/yum.repos.d``` 生成了新的源文件 ```CentOS-Base.repo.rpmnew```
+3. 把 ```CentOS-Base.repo.rpmnew``` 修改为 ```CentOS-Base.repo```，```$releasever``` 就可以正常解析了
