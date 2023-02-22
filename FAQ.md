@@ -66,20 +66,21 @@ XFS(xxx)....
 
 ## 7 $releasever 不能被系统识别
 
-yum 报错:
+问题:
 
-```
-http://mirrors.aliyun.com/centos/%24releasever/os/x86_64/repodata/repomd.xml: [Errno 14] HTTP Error 404 - Not Found
-```
+1. yum 报错:
 
-```$releasever``` 变量没有被系统识别:
+   ```
+   http://mirrors.aliyun.com/centos/%24releasever/os/x86_64/repodata/repomd.xml: [Errno 14] HTTP Error 404 - Not Found
+   ```
 
-```bash
-# rpm -q centos-release
-package centos-release is not installed
-```
+   ```$releasever``` 变量没有被系统识别。
+2. ```centos-release``` 包没有安装:
 
-```centos-release``` 包没有安装。
+   ```bash
+   # rpm -q centos-release
+   package centos-release is not installed
+   ```
 
 解决方法:
 
