@@ -144,6 +144,22 @@ target_username@target_ip's password:
 target_username@target_ip's password:
 ```
 
+### 免密码传输文件
+
+1. 在主机 A 上生成配对密钥:
+   ```bash
+   ssh-keygen -t rsa
+   ```
+2. 遇到提示回车默认即可，生成的公钥位置:
+   ```
+   /root/.ssh/id_rsa.pub
+   ```
+3. 将主机 A 的 ```id_rsa.pub``` 文件复制到主机 B 的 ```~/.ssh/``` 目录中，并改名为 ```authorized_keys```:
+   ```bash
+   scp /root/.ssh/id_rsa.pub root@192.168.0.10:/root/.ssh/authorized_keys
+   ```
+   此时在主机 A 中用 SSH 登录主机 B 或向主机 B 拷贝文件，都将不需要密码。
+
 ## 压缩/解压文件
 
 ### tar.gz
