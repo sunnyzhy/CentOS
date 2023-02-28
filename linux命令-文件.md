@@ -38,6 +38,12 @@
 # cp /home/run.sh /usr/local
 ```
 
+强制覆盖:
+
+```bash
+# \cp /home/run.sh /usr/local
+```
+
 ## 修改文件名
 
 ```bash
