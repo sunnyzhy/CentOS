@@ -284,6 +284,50 @@ x86_64
 64
 ```
 
+### 查看 cpu 信息
+
+```bash
+lscpu
+```
+
+### 查看 cpu 核数
+
+- ```lscpu | grep "CPU(s)"``` 命令
+- 先输入 ```top``` 命令，再按 ```1```
+
+### 判断服务器的虚拟机类型
+
+```bash
+systemd-detect-virt
+```
+
+- 物理机：```none```
+- 虚拟机
+   |ID|Product|
+   |--|--|
+   |qemu|QEMU 软件虚拟机(未使用KVM)|
+   |kvm|Linux 内核虚拟机(使用除 Oracle Virtualbox 之外的其他虚拟机管理程序)|
+   |zvm|s390 z/VM|
+   |vmware|VMware 虚拟机|
+   |microsoft|Hyper-V 虚拟机|
+   |oracle|Oracle VirtualBox 虚拟机|
+   |xen|Xen 虚拟机(仅 domU, 非 dom0)|
+   |bochs|Bochs 模拟器|
+   |uml|User-mode Linux|
+   |parallels|Parallels Desktop, Parallels Server|
+   |bhyve|bhyve, FreeBSD hypervisor|
+   |qnx|QNX hypervisor|
+
+- 容器
+   |ID|Product|
+   |--|--|
+   |openvz|OpenVZ/Virtuozzo|
+   |lxc|LXC 容器|
+   |lxc-libvirt|通过 libvirt 实现的容器|
+   |systemd-nspawn|systemd 最简容器)
+   |docker|Docker 容器|
+   |rkt|rkt 应用容器|
+
 ## 设置开机启动脚本
 
 ***把 .sh 脚本加入 ```/etc/rc.local```***
