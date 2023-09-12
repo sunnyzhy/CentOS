@@ -34,6 +34,11 @@ awk 一次从文件中读取一条记录，并将记录存储在列变量 ```0``
     # echo hello the world | awk '{print $NF}'
     world
     ```
+- 忽略大小写：
+    ```bash
+    # echo 'HELLO: WORLD!' | awk 'BEGIN{IGNORECASE=1} /hello:/ {print $2}'
+    WORLD!
+    ```
 
 ## 字段分隔符
 
@@ -77,73 +82,73 @@ hello the word !
 ```
 
 - 输出每行的行号：
-```bash
-# awk '{print NR}' awk.txt
-1
-2
-3
-4
-5
-```
+    ```bash
+    # awk '{print NR}' awk.txt
+    1
+    2
+    3
+    4
+    5
+    ```
 - 输出每行列数：
-```bash
-# awk '{print NF}' awk.txt 
-3
-3
-3
-3
-3
-```
+    ```bash
+    # awk '{print NF}' awk.txt 
+    3
+    3
+    3
+    3
+    3
+    ```
 - 输出每行的第一列的内容：
-```bash
-# awk '{print $1}' awk.txt 
-1
-2
-3
-4
-5
-```
+    ```bash
+    # awk '{print $1}' awk.txt 
+    1
+    2
+    3
+    4
+    5
+    ```
 - 输出每行的最后一列的内容：
-```bash
-# awk '{print $NF}' awk.txt 
-100
-200
-300
-400
-500
-```
+    ```bash
+    # awk '{print $NF}' awk.txt 
+    100
+    200
+    300
+    400
+    500
+    ```
 - 输出第一行的内容：
-```bash
-# awk 'NR==1 {print}' awk.txt 
-1  one    100
-```
+    ```bash
+    # awk 'NR==1 {print}' awk.txt 
+    1  one    100
+    ```
 - 输出第一行第二列的内容：
-```bash
-# awk 'NR==1 {print $2}' awk.txt 
-one
-```
+    ```bash
+    # awk 'NR==1 {print $2}' awk.txt 
+    one
+    ```
 - 输出第一行最后一列的内容：
-```bash
-# awk 'NR==1 {print $NF}' awk.txt 
-100
-```
+    ```bash
+    # awk 'NR==1 {print $NF}' awk.txt 
+    100
+    ```
 - 输出第二行以后的内容：
-```bash
-# awk 'NR>=3 {print $0}' awk.txt 
-3  three  300
-4  four   400
-5  five   500
-```
+    ```bash
+    # awk 'NR>=3 {print $0}' awk.txt 
+    3  three  300
+    4  four   400
+    5  five   500
+    ```
 - 输出最后一行的内容：
-```bash
-# awk 'END {print $0}' awk.txt
-5  five   500
-```
+    ```bash
+    # awk 'END {print $0}' awk.txt
+    5  five   500
+    ```
 - 输出最后一行最后一列的内容：
-```bash
-# awk 'END {print $NF}' awk.txt
-500
-```
+    ```bash
+    # awk 'END {print $NF}' awk.txt
+    500
+    ```
 
 示例：
 
@@ -286,4 +291,34 @@ END
 34
 35
 34
+```
+
+## 扩展应用
+
+### 求和
+
+```bash
+# awk '{sum+=$1} END {print "Sum =", sum}' awk.txt 
+Sum = 15
+```
+
+### 求平均值
+
+```bash
+# awk '{sum+=$1} END {print "Average =", sum/NR}' awk.txt
+Average = 3
+```
+
+### 求最大值
+
+```bash
+# awk 'BEGIN {max = 0} {if ($1>max) max=$1 fi} END {print "Max =", max}' awk.txt
+Max = 5
+```
+
+### 求最小值
+
+```bash
+# awk 'BEGIN {min = 100} {if ($1<min) min=$1 fi} END {print "Min=", min}' awk.txt
+Min= 1
 ```
