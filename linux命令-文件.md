@@ -139,14 +139,28 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 ### 传输单个文件
 
 ```bash
-# scp -r /usr/local/dir target_username@target_ip:/usr/local/dir
+# scp /usr/local/file1 target_username@target_ip:/usr/local/dir
 target_username@target_ip's password:
 ```
 
-### 传输指定目录下的所有文件
+### 传输多个文件
 
 ```bash
-# scp -r /usr/local/dir/* target_username@target_ip:/usr/local/dir
+# scp /usr/local/file1 /usr/local/file2 target_username@target_ip:/usr/local/dir
+target_username@target_ip's password:
+```
+
+### 传输单个目录
+
+```bash
+# scp -r /usr/local/dir1 target_username@target_ip:/usr/local
+target_username@target_ip's password:
+```
+
+### 传输多个目录
+
+```bash
+# scp -r /usr/local/dir1 /usr/local/dir2 target_username@target_ip:/usr/local
 target_username@target_ip's password:
 ```
 
