@@ -164,6 +164,28 @@ echo "---------------"
 /usr/local/find/bb
 ```
 
+## 批量结束进程
+
+### 命令行
+
+```bash
+kill -9 `ps -ef | grep process- | awk 'NR>1 {print line} {line=$0}' | awk '{print $2}'`
+```
+
+### shell 脚本
+
+```bash
+#/bin/sh
+
+PID=`ps -ef | grep process- | awk 'NR>1 {print line} {line=$0}' | awk '{print $2}'`
+for p in $PID
+do
+   kill -s 9 $p
+done
+
+echo "ok"
+```
+
 ## 综合应用
 ```bash
 #/bin/sh
