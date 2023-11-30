@@ -149,6 +149,14 @@ hello the word !
     # awk 'END {print $NF}' awk.txt
     500
     ```
+- 不输出最后一行的内容：
+    ```bash
+    # awk 'NR>1 {print line} {line=$0}' awk.txt
+    1  one    100
+    2  two    200
+    3  three  300
+    4  four   400
+    ```
 
 示例：
 
