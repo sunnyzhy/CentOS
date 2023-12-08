@@ -418,3 +418,94 @@ gz
       ```bash
       :g/aa/s//bb/g
       ```
+
+## 写文件
+
+## echo
+
+- ```echo > FileName```：覆盖写入
+   ```bash
+   # echo aa > 1.log
+   
+   # cat 1.log
+   aa
+   
+   # echo 11 > 1.log
+   
+   # cat 1.log
+   11
+   ```
+
+- ```echo >> FileName```：追加写入
+   ```bash
+   # echo aa > 1.log
+   
+   # cat 1.log
+   aa
+   
+   # echo 11 >> 1.log
+   
+   # cat 1.log
+   aa
+   11
+   ```
+
+### cat 和 EOF
+
+```
+cat：该文本输出命令用于显示文本的全部内容，并全部打印输出
+EOF：文本结束符，即 ```end of file```，表示文件内容的结束
+```
+
+- ```cat > FileName << EOF```：覆盖写入
+   ```bash
+   # echo aa > 1.log
+   
+   # cat 1.log
+   aa
+   ```
+   
+   编辑 1.sh:
+  
+   ```bash
+   #!/bin/sh
+   
+   cat > 1.log << EOF
+   11
+   EOF
+   ```
+   
+   ```bash
+   # ./1.sh
+   
+   # cat 1.log
+   11
+   ```
+
+- ```cat >> FileName << EOF```：追加写入
+   ```bash
+   # echo aa > 1.log
+   
+   # cat 1.log
+   aa
+   ```
+   
+   编辑 1.sh:
+  
+   ```bash
+   #!/bin/sh
+   
+   cat >> 1.log << EOF
+   11
+   EOF
+   ```
+   
+   ```bash
+   # ./1.sh
+   
+   # cat 1.log
+   aa
+   11
+   ```
+
+- ```cat > FileName```：覆盖写入，使用 ```Ctrl + C``` 或者 ```Ctrl + D``` 退出编辑
