@@ -7,6 +7,8 @@
 - CentOS Linux 8 作为 RHEL 8 的复刻版本，生命周期缩短，于 2021 年 12 月 31 日停止更新并停止维护（EOL）
 - CentOS 官方不再提供 CentOS Linux 9 及后续版本，而是提供 CentOS Stream 版本
 
+[参考](https://help.aliyun.com/zh/ecs/user-guide/options-for-dealing-with-centos-linux-end-of-life '参考')
+
 ## CentOS 的变更历史
 
 CentOS 处于红帽生态链的最下游，即 ```Fedora → RHEL → CentOS```。Fedora 作为新功能的试验场，其成果被收入以稳定性著称的 RHEL（Red Hat Enterprise Linux，红帽企业级操作系统）中，但使用 RHEL 是需要付出高昂的订阅费用的；而 CentOS 是依据开源协议，从 RHEL 源代码中去除商标部分后重新编译而成的系统，既继承了 RHEL 的优秀特性，又是完全免费的。换言之，真正好用的是红帽系统，而 CentOS 是它的免费替代品。
