@@ -41,7 +41,11 @@
 强制覆盖:
 
 ```bash
-# \cp /home/run.sh /usr/local
+# \cp -rf src dest
+```
+
+```bash
+# /bin/cp -rf src dest
 ```
 
 ## 修改文件名
