@@ -434,10 +434,9 @@ gz
    - ```new_text```：替换后的文本
    - ```g```：全局匹配（否则只替换每行第一个匹配项）
 
-2. 直接修改原文件（使用 -i 选项）
+2. 直接修改原文件（使用 ```-i``` 选项）
 
    ```bash
-   # Linux 系统
    sed -i 's/old_text/new_text/g' filename
 
    # 带备份的修改（创建 filename.bak）
