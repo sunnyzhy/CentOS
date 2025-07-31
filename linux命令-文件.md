@@ -385,8 +385,6 @@ gz
 
 ## vim 替换
 
-***后续完善 sed 指令***
-
 1. 把当前行的第一个 aa 替换为 bb
 
    ```bash
@@ -422,6 +420,59 @@ gz
       ```bash
       :g/aa/s//bb/g
       ```
+
+## sed 替换
+
+1. 基本替换（不修改原文件）
+
+   ```bash
+   sed 's/old_text/new_text/g' filename
+   ```
+
+   - ```s```：表示替换命令
+   - ```old_text```：要替换的文本
+   - ```new_text```：替换后的文本
+   - ```g```：全局匹配（否则只替换每行第一个匹配项）
+
+2. 直接修改原文件（使用 -i 选项）
+
+   ```bash
+   # Linux 系统
+   sed -i 's/old_text/new_text/g' filename
+
+   # 带备份的修改（创建 filename.bak）
+   sed -i.bak 's/old_text/new_text/g' filename
+   ```
+
+3. 使用正则表达式
+
+   ```bash
+   # 替换所有数字
+   sed 's/[0-9]\+/REPLACED/g' filename
+   ```
+
+4. 批量替换多个文件
+
+   ```bash
+   # 替换当前目录下所有 .txt 文件
+   sed -i 's/old_text/new_text/g' *.txt
+
+   # 递归替换所有文件
+   find . -type f -exec sed -i 's/old_text/new_text/g' {} \;
+
+   # 只替换特定类型的文件
+   find . -name "*.java" -exec sed -i 's/old_text/new_text/g' {} \;
+   ```
+
+5. 包含特殊字符的替换（当替换内容包含 /、$ 等特殊字符时，需要转义或使用其他分隔符）
+
+   ```bash
+   # 使用其他分隔符（如 |）
+   sed 's|http://old.com|http://new.com|g' filename
+
+   # 转义特殊字符
+   sed 's/old\/path/new\/path/g' filename
+   ```
 
 ## 写文件
 
