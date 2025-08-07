@@ -222,6 +222,20 @@ target_username@target_ip's password:
 # unzip xxx.jar -d xxx
 ```
 
+## 从压缩文件里复制单个文件
+
+### 从jar文件里复制单个文件
+
+```bash
+# jar -xvf xxx.jar BOOT-INF/classes/application-dev.yml
+# cp BOOT-INF/classes/application-dev.yml ./
+```
+
+```bash
+# unzip xxx.jar BOOT-INF/classes/application-dev.yml
+# cp BOOT-INF/classes/application-dev.yml ./
+```
+
 ## 获取文件名和目录名
 
 ### basename 获取文件名
