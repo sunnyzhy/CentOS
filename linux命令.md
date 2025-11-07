@@ -144,6 +144,66 @@ tmpfs                    1.6G     0  1.6G   0% /run/user/0
 
 使用 rm 删除文件的时候，如果有进程打开了这个文件，却没有关闭这个文件的句柄，那么linux内核还是不会释放这个文件的磁盘空间。可以 echo > filename 清空文件。
 
+### 查看系统所有顶级目录的大小（整体磁盘占用分析）
+
+```bash
+# du -h -d 1 /
+0       /proc
+4.0K    /mnt
+2.5G    /root
+10G     /usr
+5.3G    /home
+3.2G    /var
+...
+25G     /
+```
+
+注意：
+
+权限问题：部分目录（如 /root）需要 root 权限才能查看完整大小，普通用户可能看到 Permission denied 提示，此时可加 sudo 执行：
+
+```bash
+sudo du -sh /root
+```
+
+### 查看单个目录的总大小
+
+查看 ```/root、/usr、/home``` 等目录的总大小，使用 ```du -sh``` 目录路径：
+
+```bash
+# du -sh /root
+
+# du -sh /usr
+
+# du -sh /home
+```
+
+### 查看目录及其一级子目录的大小
+
+若想同时查看目录下一级子目录的大小，使用 ```du -h -d 1``` 目录路径（```-d 1``` 表示深度为 1）：
+
+```bash
+# du -h -d 1 /usr
+4.0K    /usr/etc
+8.0G    /usr/share
+1.2G    /usr/lib
+500M    /usr/bin
+...
+10G     /usr
+```
+
+### 一次性查看多个目录的大小
+
+通过空格分隔目录路径，一次性查看多个目录：
+
+```bash
+# du -sh /root /usr /home /var
+2.5G    /root
+10G     /usr
+5.3G    /home
+3.2G    /var
+```
+
 ## 切换账号
 
 - root 切换到普通用户
