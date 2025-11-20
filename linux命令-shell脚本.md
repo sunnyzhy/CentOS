@@ -24,6 +24,12 @@ done
 echo "---------------"
 ```
 
+批量 kill 进程:
+
+```bash
+ps -ef | grep st- | grep -v grep | awk '{print $2}' | xargs kill -9
+```
+
 ## 2 find
 
 创建目录:
