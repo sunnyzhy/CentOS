@@ -24,12 +24,6 @@ done
 echo "---------------"
 ```
 
-批量 kill 进程:
-
-```bash
-ps -ef | grep st- | grep -v grep | awk '{print $2}' | xargs kill -9
-```
-
 ## 2 find
 
 创建目录:
@@ -175,7 +169,11 @@ ps -ef | grep st- | grep -v grep | awk '{print $2}' | xargs kill -9
 ### 命令行
 
 ```bash
-kill -9 `ps -ef | grep process- | awk 'NR>1 {print line} {line=$0}' | awk '{print $2}'`
+# kill -9 `ps -ef | grep process- | awk 'NR>1 {print line} {line=$0}' | awk '{print $2}'`
+
+# ps -ef | grep process- | awk 'NR>1 {print line} {line=$0}' | awk '{print $2}' | xargs kill -9
+
+# ps -ef | grep process- | grep -v grep | awk '{print $2}' | xargs kill -9
 ```
 
 ### shell 脚本
