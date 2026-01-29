@@ -82,6 +82,41 @@ javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 
 ## 查看磁盘空间
 
+### 查看内存占用率高的进程
+
+```bash
+# 按内存使用排序（看 RES 列）
+ps aux --sort=-%mem | head -n 10
+```
+
+### 配置 Swap
+
+```Swap = 0``` 是最大隐患！没有 swap 意味着：一旦物理内存耗尽，系统会直接 OOM，而不是用磁盘缓冲。即使内存充足，也建议配置 小量 swap（如 2–4GB） 作为安全网。
+
+```bash
+# 创建 4GB swap 文件
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+# 永久生效：写入 /etc/fstab
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# 验证
+free -h  # 应看到 Swap 显示 4.0G
+```
+
+***不要手动清缓存:***
+
+```bash
+# 避免执行
+echo 3 > /proc/sys/vm/drop_caches
+```
+
+- 这会清空磁盘缓存，导致后续 I/O 性能暴跌（系统要重新读磁盘）。
+- Linux 会在需要时自动回收 cache，无需人工干预。
+
 ### 查看系统磁盘空间大小
 
 ```bash
