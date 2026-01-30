@@ -107,6 +107,28 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 free -h  # 应看到 Swap 显示 4.0G
 ```
 
+关闭 Swap:
+
+```bash
+# 清理 page cache, dentries, inodes
+echo 3 | sudo tee /proc/sys/vm/drop_caches
+
+# 关闭 swap，因为系统需要将大量数据从 swap 换回物理内存，所以这个过程可能非常慢
+sudo swapoff /swapfile
+
+# 删除 /swapfile none swap sw 0 0 可以用以下两种方法
+# 方法1、找到 /swapfile none swap sw 0 0，将其删除或在行首加 # 注释掉
+sudo vim /etc/fstab
+# 方法2、从 fstab 移除（谨慎使用）
+sudo sed -i '/\/swapfile/d' /etc/fstab
+
+# 删除文件
+sudo rm -f /swapfile
+
+# 验证
+free -h  # 应看到 Swap 显示 0
+```
+
 ***不要手动清缓存:***
 
 ```bash
