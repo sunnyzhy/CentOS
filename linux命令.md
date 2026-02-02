@@ -80,6 +80,15 @@ javafx-src.zip  man      THIRDPARTYLICENSEREADME-JAVAFX.txt
 /usr/local
 ```
 
+## 查看日志
+
+```bash
+# 查看详细的错误信息
+sudo journalctl -u service_name -n 50 --no-pager
+
+sudo journalctl -u service_name -xe --no-pager
+```
+
 ## 查看磁盘空间
 
 ### 查看内存占用率高的进程
