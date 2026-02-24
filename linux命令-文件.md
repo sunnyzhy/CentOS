@@ -125,10 +125,12 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 预览匹配的文件（安全确认）：
 
 ```bash
-find /var/lib/mysql -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2
+find /path/to/search -type f -name 'binlog.*' -mtime +2
+
+find /path/to/search -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2
 ```
 
-- ```/var/lib/mysql```：目标目录，可用 . 表示当前目录。
+- ```/path/to/search```：目标目录，可用 . 表示当前目录。
 - ```-type f```：只查找普通文件。
 - ```-regextype posix-extended```：使用扩展正则表达式。
 - ```-regex '.*/binlog\.[0-9]+$'```：匹配完整路径，```.*/``` 匹配任意目录部分，```binlog\.``` 匹配文件名前缀（点号需转义），```[0-9]+``` 匹配一个或多个数字，```$``` 确保文件名以数字结尾。
@@ -137,10 +139,34 @@ find /var/lib/mysql -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$
 确认后执行删除：
 
 ```bash
-find /var/lib/mysql -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2 -delete
+find /path/to/search -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2 -delete
 ```
 
 - ```delete```：直接删除匹配的文件。请确保预览无误后再执行此命令。
+
+### 删除指定时间之前的文件夹
+
+预览匹配的文件夹（安全确认）：
+
+```bash
+find /path/to/search -type d -name '2026*' -mtime +2
+
+find /path/to/search -type d -regextype posix-egrep -regex '.*/[0-9]{8}$' -mtime +2
+```
+
+- ```/path/to/search```：目标目录，可用 . 表示当前目录。
+- ```-type d```：只查找文件夹。
+- ```-regextype posix-extended```：使用扩展正则表达式。
+- ```-regex '.*/[0-9]{8}$'```：匹配完整路径，```.*/``` 匹配任意目录部分，```[0-9]{8}``` 匹配 8 位数字，```$``` 确保文件名以数字结尾。
+- ```-mtime +2```：查找修改时间在 至少 3 天前 的文件（严格大于 2 天前，即 ≥3 天）。若需删除超过 3 天的文件（即 ≥4 天前），可改用 ```-mtime +3```。
+
+确认后执行删除：
+
+```bash
+find /path/to/search -type d -regextype posix-egrep -regex '.*/[0-9]{8}$' -mtime +2 -print0 | xargs -0 rm -rf
+```
+
+- ```rm -rf```：对每个匹配的目录执行强制递归删除。请确保预览无误后再执行此命令。
 
 ## 清空文件内容
 
