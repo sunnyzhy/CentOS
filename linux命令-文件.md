@@ -125,10 +125,10 @@ root     pts/0        2020-06-10 10:16 (xx-pc)
 预览匹配的文件（安全确认）：
 
 ```bash
-find /path/to/dir -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2
+find /var/lib/mysql -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2
 ```
 
-- ```/path/to/dir```：目标目录，可用 . 表示当前目录。
+- ```/var/lib/mysql```：目标目录，可用 . 表示当前目录。
 - ```-type f```：只查找普通文件。
 - ```-regextype posix-extended```：使用扩展正则表达式。
 - ```-regex '.*/binlog\.[0-9]+$'```：匹配完整路径，```.*/``` 匹配任意目录部分，```binlog\.``` 匹配文件名前缀（点号需转义），```[0-9]+``` 匹配一个或多个数字，```$``` 确保文件名以数字结尾。
@@ -137,7 +137,7 @@ find /path/to/dir -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' 
 确认后执行删除：
 
 ```bash
-find /path/to/dir -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2 -delete
+find /var/lib/mysql -type f -regextype posix-extended -regex '.*/binlog\.[0-9]+$' -mtime +2 -delete
 ```
 
 - ```delete```：直接删除匹配的文件。请确保预览无误后再执行此命令。
